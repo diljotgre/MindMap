@@ -1,0 +1,25 @@
+const mongoose = require('mongoose');
+const db = require("../config/db");
+//a 
+
+const{Schema}=mongoose; //here Schema is the property that you are grabbing from the  mongoose module
+
+//entries that will be stored in the library
+const userSchema = new Schema({
+    email:{
+        type: String,
+        lowercase:true,
+        required: true,
+        unique: true
+
+    },
+    password:{
+        type: String,
+        required: true,
+        
+    }
+});
+
+const userModel = db.model("MM_user", userSchema);
+
+module.exports = userModel; //export this so it can be used anywhere in the code 
